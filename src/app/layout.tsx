@@ -1,11 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Prompt, Manrope } from "next/font/google";
 import "./globals.css";
+
+import Navbar from "../components/Navbar/Navbar"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+
+const prompt = Prompt({
+  variable: "--font-prompt",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "900"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+})
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -25,9 +39,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${prompt.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
