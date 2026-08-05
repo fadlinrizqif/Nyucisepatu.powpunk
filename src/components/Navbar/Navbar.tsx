@@ -21,11 +21,11 @@ const links = [
 
 export default function Navbar() {
   return (
-    <header className="sticky top-2 z-50 flex flex-row justify-between items-center w-full h-auto  px-2 bg-primary ">
+    <header className=" flex flex-row justify-between items-center w-full h-auto  px-2 bg-primary ">
       <div className="p-1">
-        <a href="/"><img src="/Logo.svg" alt="" /></a>
+        <a href="/"><img src="/Logo.svg" className="w-[13.7rem]" alt="" /></a>
       </div>
-      <nav className=" text-white text-[2.2rem] font-mono font-bold">
+      <nav className=" text-white text-[1.850rem] font-mono font-bold mr-3">
         <ul className="flex flex-row gap-10">
           {links.map((link) => {
             return (
