@@ -1,9 +1,9 @@
 
 export default function Service() {
   return (
-    <section className="w-full h-auto bg-primary pb-10">
-      <div className="w-full h-auto ">
-        <h1 className="font-sans text-[4rem] text-center text-white font-black">OUR SERVICE</h1>
+    <section className="w-full h-auto bg-primary pt-7 pb-10">
+      <div className="w-full h-auto mb-7">
+        <h1 className="font-sans text-[3rem] text-center text-white font-black">OUR SERVICE</h1>
       </div>
       <div className="w-full h-auto flex gap-7.5 px-7.5">
         <div className="w-auto h-auto p-6.25 bg-neutral border-2 border-black shadow-[6.44px_6.44px_0px_0px_rgba(0,0,0,0.25)]">

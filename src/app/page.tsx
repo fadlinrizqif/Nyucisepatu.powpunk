@@ -3,6 +3,7 @@ import Service from "../components/sections/Service"
 import Process from "../components/sections/Process"
 import Testimony from "../components/sections/Testimony"
 import Contact from "../components/sections/Contact"
+import Footer from "../components/Footer/Footer"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Process />
       <Testimony />
       <Contact />
+      <Footer />
     </>
   );
 }

@@ -1,9 +1,9 @@
 
 export default function Contact() {
   return (
-    <section className="w-full bg-neutral pb-10">
-      <div className="w-full h-auto ">
-        <h1 className="font-sans text-[4rem] text-center text-primary-light font-black">Contact Us</h1>
+    <section className="w-full bg-neutral pt-10 pb-10">
+      <div className="w-full h-auto mb-2">
+        <h1 className="font-sans text-[3rem] text-center text-primary-light font-black">Contact Us</h1>
       </div>
       <div className="flex flex-row w-full h-auto ">
         <div className="w-2xl h-auto ">
@@ -34,7 +34,7 @@ export default function Contact() {
           </div>
           <div>
             <h3>Email:</h3>
-            <p>Kampung Ode, Desa Kuri, Kecamatan Hakumai, Provinsi Wano</p>
+            <p>nyucisepatu@powpunk.com</p>
           </div>
         </div>
       </div>

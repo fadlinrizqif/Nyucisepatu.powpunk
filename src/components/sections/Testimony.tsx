@@ -1,9 +1,9 @@
 
 export default function Testimony() {
   return (
-    <section className="w-full h-auto bg-primary-light px-10 pb-10">
-      <div className="w-full h-auto">
-        <h1 className="font-sans text-[4rem] text-center text-white font-black">TESTIMONY</h1>
+    <section className="w-full h-auto bg-primary-light pt-10 p-10">
+      <div className="w-full h-auto mb-10">
+        <h1 className="font-sans text-[3rem] text-center text-white font-black">TESTIMONY</h1>
       </div>
       <div className="w-full flex flex-col gap-7">
         <div className="flex flex-row-reverse gap-4 w-full h-70 p-6.25 bg-neutral border-2 border-black shadow-[6.44px_6.44px_0px_0px_rgba(0,0,0,0.25)]">
