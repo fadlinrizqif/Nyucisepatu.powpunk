@@ -43,7 +43,7 @@ export async function getProducts(params: FilterProductParams): Promise<ResultTu
 
     const res = await fetch(url.toString())
     if (!res.ok) {
-      return [null, new Error("Something wrong in server")]
+      return [null, new Error("Something wrong in server" + res.body)]
     }
     const data: ProductsResponse = await res.json()
     return [data, null];
