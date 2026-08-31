@@ -22,9 +22,10 @@ type Product = {
   stock: number
 }
 
-type ProductsResponse = {
-  data: Product[];
-  total: number;
+export type ProductsResponse = {
+  data?: Product[];
+  total?: number;
+  error?: string
 }
 
 type ResultTuple<T, E = Error> =

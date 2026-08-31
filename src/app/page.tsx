@@ -3,17 +3,19 @@ import Service from "../components/sections/Service"
 import Process from "../components/sections/Process"
 import Testimony from "../components/sections/Testimony"
 import Contact from "../components/sections/Contact"
-import Footer from "../components/Footer/Footer"
+import Navbar from "@/components/Navbar/Navbar"
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Service />
-      <Process />
-      <Testimony />
-      <Contact />
-      <Footer />
+      <Navbar />
+      <main>
+        <Hero />
+        <Service />
+        <Process />
+        <Testimony />
+        <Contact />
+      </main>
     </>
   );
 }
