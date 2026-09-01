@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaCartShopping, FaRegCircleUser } from "react-icons/fa6";
 import CartList from "../Carts/CartList";
+import LinkButton from "../ui/LinkButton";
+import { useUser } from "@/stores/useUser";
 
 const links = [
   {
@@ -29,7 +31,9 @@ const links = [
 
 
 export default function Navbar() {
-  const [userData, SetUserData] = useState<UserRespond | null>(null)
+  //const [userData, SetUserData] = useState<UserRespond | null>(null)
+  const user = useUser((state) => state.user)
+  const setUser = useUser((state) => state.setUser)
   const [showCart, setShowCart] = useState(true)
   const [showProfile, setShowProfile] = useState(true)
   const router = useRouter()
@@ -49,14 +53,14 @@ export default function Navbar() {
 
         const [user, err] = await getUserData()
         if (user?.error) {
-          SetUserData(err)
+          setUser(user)
         }
 
-        SetUserData(user)
+        setUser(user)
 
       } catch (err) {
         const errorInstace = err instanceof Error ? err : new Error("Something wrong in Network")
-        SetUserData(errorInstace)
+        setUser(errorInstace)
       }
     }
 
@@ -71,7 +75,7 @@ export default function Navbar() {
       return
     }
     console.log("berhasil gaes")
-    SetUserData(null)
+    setUser(null)
 
     router.refresh()
 
@@ -91,18 +95,18 @@ export default function Navbar() {
           })}
         </ul>
         {
-          userData?.name ? (
+          user?.name ? (
             <>
               <div className="flex items-end justify-center w-auto h-full mx-2">
-                <button onClick={isShowCart} className="absolute top-5">
+                <button onClick={isShowCart} className="absolute top-5 ">
                   <FaCartShopping className="text-white hover:text-primary-light" />
                 </button>
                 {!showCart && <CartList />}
               </div>
               <div className="flex flex-row gap-5 items-center">
-                <button onClick={isShowProfile} className="flex flex-col items-center">
+                <button onClick={isShowProfile} className="flex flex-col items-center cursor-pointer">
                   <FaRegCircleUser className="w-5 h-5 text-white" />
-                  <p className="text-white text-[0.8rem]">{userData.name}</p>
+                  <p className="text-white text-[0.8rem]">{user.name}</p>
                 </button>
                 {!showProfile &&
 
@@ -117,8 +121,8 @@ export default function Navbar() {
           ) : (
 
             <div className="flex flex-row gap-5">
-              <a href="/login" className=" w-32 h-auto bg-white text-[1.2rem] text-primary font-sans font-black border-2 border-black shadow-[6.44px_6.44px_0px_0px_rgba(0,0,0,0.25)] flex justify-center items-center"  >Login</a>
-              <a href="/register" className=" w-32 h-auto bg-white text-[1.2rem] text-primary font-sans font-black border-2 border-black shadow-[6.44px_6.44px_0px_0px_rgba(0,0,0,0.25)] flex justify-center items-center"  >Register</a>
+              <LinkButton href="/login" variant="secondary">Login</LinkButton>
+              <LinkButton href="/register" variant="secondary">Register</LinkButton>
             </div>
 
 

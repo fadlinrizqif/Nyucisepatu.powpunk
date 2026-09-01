@@ -43,10 +43,10 @@ export async function getProducts(params: FilterProductParams): Promise<ResultTu
     if (params.category) url.searchParams.append("category", params.category);
 
     const res = await fetch(url.toString())
-    if (!res.ok) {
+    const data: ProductsResponse = await res.json()
+    if (!res.ok || data.error) {
       return [null, new Error("Something wrong in server" + res.body)]
     }
-    const data: ProductsResponse = await res.json()
     return [data, null];
 
   } catch (err) {

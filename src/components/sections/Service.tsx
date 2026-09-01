@@ -1,12 +1,28 @@
 'use client'
 
 import { getProducts, ProductsResponse } from "@/services/productService";
-import { useCart } from "@/stores/useCart";
+import { CartItem, useCart } from "@/stores/useCart";
 import { useEffect, useState } from "react";
+import Button from "../ui/Button";
+import { useRouter } from "next/navigation";
+import { useUser } from "@/stores/useUser";
 
 export default function Service() {
+  const router = useRouter()
+
+  const user = useUser((state) => state.user)
   const [product, setProduct] = useState<ProductsResponse | null>(null)
   const addItem = useCart((state) => state.addItem)
+
+  const handleCart = (funcCart: () => void) => {
+    console.log(user?.name)
+    if (!user?.name) {
+      router.push("/login")
+      return
+    }
+    funcCart()
+
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,6 +30,9 @@ export default function Service() {
         const [services, err] = await getProducts({
           category: "service"
         })
+
+
+
         if (services?.error) {
           setProduct(services)
         }
@@ -61,11 +80,13 @@ export default function Service() {
                   </ul>
                 </div>
                 <div className="w-full h-auto flex justify-center mt-3">
-
-                  <button onClick={() => {
-                    console.log("clean button di klik")
-                    addItem({ id: service.id, name: service.name, price: service.price, quantity: 1 })
-                  }} className=" w-[16rem] h-auto bg-primary text-[2rem] text-white hover:bg-neutral hover:text-primary font-sans font-black border-2 border-black shadow-[6.44px_6.44px_0px_0px_rgba(0,0,0,0.25)]" type="button">Clean Now</button>
+                  <Button
+                    onClick={() => {
+                      handleCart(() => addItem({ id: service.id, name: service.name, price: service.price, quantity: 1 }))
+                    }}
+                  >
+                    Clean Now
+                  </Button >
                 </div>
               </div>
             );

@@ -84,7 +84,7 @@ export default function Page() {
             </div>
             <div className="flex flex-col items-center w-full h-auto text-center">
               <p>Or</p>
-              <a href="http://localhost:8080/auth/google/login" target='_blank'>
+              <a href="http://localhost:8080/auth/google/login">
                 <FaGoogle className='w-6 h-6 text-primary' />
               </a>
               <p>Not registered yet? <a href="/register">Register Now</a></p>
